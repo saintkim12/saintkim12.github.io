@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css">
+  <title>saintkim12.github.io</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+  import { h, Component } from 'https://unpkg.com/preact?module'
+  import { html, render } from 'https://unpkg.com/htm/preact/index.mjs?module'
+
+  function App() {
+    return html/* html */`
+      <div style=${{ textAlign: 'center' }}>
+        <h1>@saintkim12</h1>
+        <h2><a href="./page-introduce">Introduce</a></h2>
+      </div>
+    `
+  }
+  // render(html/* html */`<${App} />`, document.getElementById('app'))
+  render(App(), document.getElementById('app'))
+
+</script>
+</body>
+</html>
