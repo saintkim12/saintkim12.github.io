@@ -5,19 +5,138 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/normalize.css">
-  <title>saintkim12.github.io</title>
+  <script>window.process = { env: { NODE_ENV: 'development' } }</script>
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js/dist/tippy.css">
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css">
+  <title>@saintkim12 :: saintkim12.github.io</title>
+  <!-- <style>
+    a.tooltip-link {
+      color: white;
+    }
+    .tooltip-wrap > * {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  </style> -->
 </head>
 <body>
 <div id="app"></div>
 <script type="module">
   import { h, Component } from 'https://unpkg.com/preact?module'
+  import { useState, useEffect, useRef } from 'https://unpkg.com/preact/hooks/dist/hooks.mjs?module'
   import { html, render } from 'https://unpkg.com/htm/preact/index.mjs?module'
+  import tippy from 'https://unpkg.com/tippy.js?module'
+  import { styled, setup } from 'https://unpkg.com/goober?module'
+  setup(h)
+
+  function ElFooter() {
+    const StyledFooter = styled('footer')/* css */`
+      display: flex;
+      justifyContent: center;
+      position: absolute;
+      width: 100vw;
+      left: 0;
+      bottom: 0;
+      color: #888;
+      fontSize: .8rem;
+      padding: 1rem 0;
+      & > * {
+        margin: 0 .4rem;
+      }
+      a {
+        color: inherit;
+      }
+    `
+    // const StyledTooltipWrapper = styled('div')/* css */`
+    //   & > * {
+    //     margin-top: 0;
+    //     margin-bottom: 0;
+    //   }
+    //   a.tooltip-link {
+    //     color: white;
+    //   }
+    // `
+    // const styleTooltipLinkAnchors = {
+    //   color: 'white',
+    // }
+    // const styleTooltipWrapChildrens = {
+    //   'marginTop': '0',
+    //   'marginBottom': '0',
+    // }
+    
+    const [instance, setInstance] = useState(undefined)
+    const stackTooltip = useRef(undefined)
+    useEffect(() => {
+      if (stackTooltip.current) {
+        console.log('stackTooltip.current', stackTooltip.current)
+        const makeAnchorTagHTML = (title, href) => `<a href="${href}" target="_blank" class="tooltip-link">${title}</a>`
+        setInstance(tippy(stackTooltip.current, {
+          // trigger: 'click',
+          interactive: true,
+          appendTo: () => document.body,
+          allowHTML: true,
+          content: /* html */`
+            <div class="tooltip-wrap">
+              <h5 style="margin-bottom: .5rem;">Stacks</h5>
+              <p>${makeAnchorTagHTML('Preact', 'https://preactjs.com/')}</p>
+              <p>${makeAnchorTagHTML('fontawesome', 'https://fontawesome.com/')}</p>
+              <p>${makeAnchorTagHTML('tippy.js', 'https://atomiks.github.io/tippyjs/')}</p>
+            </div>`,
+        }))
+        console.log('instance', instance)
+        tippy('#myButton', {
+          content: 'My tooltip!',
+        })
+      }
+      return () => {
+        setInstance(undefined)
+      }
+    }, [stackTooltip])
+    return html/* html */`
+      <${StyledFooter}>
+        <p>© 2022 saintkim12. All Rights Reserved.</p>
+        <p
+          ref=${stackTooltip}
+          style=${{ marginLeft: '.3rem', cursor: 'pointer' }}
+        >
+          <i class="fas fa-info" />
+        </p>
+        <p>
+          <a
+            href="https://github.com/saintkim12/saintkim12.github.io"
+            title="Repository of This Page"
+          ><i class="fas fa-code" /></a>
+        </p>
+        <p>
+          <a
+            href="mailto:saintkim1232@gmail.com"
+            title="E-Mail"
+          ><i class="fas fa-envelope" /></a>
+        </p>
+        <p>
+          <a
+            href="https://github.com/saintkim12"
+            title="Github"
+          ><i class="fab fa-github" /></a>
+        </p>
+        <p>
+          <a
+            href="."
+            title="Main"
+          ><i class="fas fa-home" /></a>
+        </p>
+      <//>
+    `
+  }
 
   function App() {
     return html/* html */`
-      <div style=${{ textAlign: 'center' }}>
-        <h1>@saintkim12</h1>
-        <h2><a href="./page-introduce">Introduce</a></h2>
+      <div>
+        <div style=${{ textAlign: 'center' }}>
+          <h1>@saintkim12</h1>
+          <h2><a href="./page-introduce">Introduce</a></h2>
+        </div>
+        <${ElFooter} />
       </div>
     `
   }
