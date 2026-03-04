@@ -1,0 +1,16 @@
+{
+  "name": "saintkim12-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for saintkim12.github.io with blog and portfolio",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "setup-resume": "node scripts/setup-resume.mjs",
+    "preview": "echo 'Preview: serve dist/ directory'"
+  },
+  "keywords": ["astro", "blog", "portfolio", "github-pages"],
+  "author": "saintkim12",
+  "license": "MIT",
+  "devDependencies": {}
+}
