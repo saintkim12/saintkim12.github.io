@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../layouts/BlogLayout.astro';
+import { metaHelpers } from '../config';
+
+const resumeEntries = await getCollection('resume');
+const fullEntry = resumeEntries.find((entry) => entry.slug === 'index');
+
+if (!fullEntry) {
+  throw new Error('Resume index entry not found');
+}
+
+const { Content } = await fullEntry.render();
+const meta = metaHelpers.resume();
+---
+
+<BlogLayout
+  title={`${fullEntry.data.title} - 포트폴리오`}
+  description={fullEntry.data.description || meta.description}
+>
+  <article class="resume-content">
+    <Content />
+  </article>
+
+  <style>
+    .resume-content {
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+
+    .resume-content :global(h1) {
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 0.5rem;
+    }
+
+    .resume-content :global(h2) {
+      color: #007bff;
+      border-left: 4px solid #007bff;
+      padding-left: 1rem;
+    }
+
+    .resume-content :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .resume-content :global(th),
+    .resume-content :global(td) {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .resume-content :global(th),
+      .resume-content :global(td) {
+        border-color: #444;
+      }
+    }
+
+    .resume-content :global(th) {
+      background: #f5f5f5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .resume-content :global(th) {
+        background: #2d2d2d;
+      }
+    }
+  </style>
+</BlogLayout>
