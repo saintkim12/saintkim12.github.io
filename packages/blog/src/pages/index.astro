@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../layouts/BlogLayout.astro';
+import { pathHelpers, metaHelpers } from '../config';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const meta = metaHelpers.blogList();
+---
+
+<BlogLayout
+  title={meta.title}
+  description={meta.description}
+>
+  <h1>블로그</h1>
+  <p>기술 관련 글들을 시간순으로 정렬했습니다.</p>
+
+  {posts.length > 0 ? (
+    <div class="blog-list">
+      {posts.map((post) => (
+        <article class="blog-card">
+          <a href={pathHelpers.blogPost(post.slug)}>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+            <p class="post-meta">
+              {post.data.pubDate.toLocaleDateString('ko-KR')}
+              {post.data.author && ` • ${post.data.author}`}
+            </p>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </a>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <p>아직 글이 없습니다.</p>
+  )}
+</BlogLayout>

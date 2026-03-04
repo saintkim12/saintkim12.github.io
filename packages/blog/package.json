@@ -1,0 +1,23 @@
+{
+  "name": "saintkim12-blog",
+  "version": "1.0.0",
+  "description": "Blog package for saintkim12.github.io",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "keywords": [
+    "astro",
+    "blog",
+    "github-pages"
+  ],
+  "author": "saintkim12",
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^4.8.0",
+    "remark-breaks": "^4.0.0"
+  }
+}

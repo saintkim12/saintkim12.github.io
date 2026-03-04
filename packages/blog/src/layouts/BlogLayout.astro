@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import { siteConfig, pathHelpers } from '../config';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+// navLinksConfig에서 pathHelpers를 적용해 navLinks 생성
+const navLinks = (siteConfig.navLinksConfig as any[])?.map((link: any) => {
+  if (link.external || link.href) {
+    return link;
+  }
+  // key 기반으로 pathHelpers에서 href 가져오기
+  const key = link.key as keyof typeof pathHelpers;
+  const helperFn = (pathHelpers as any)[key];
+  return {
+    label: link.label,
+    href: typeof helperFn === 'function' ? helperFn() : '/',
+  };
+}) || [];
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" type="image/svg+xml" href={pathHelpers.favicon()} />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-container">
+          <a href={pathHelpers.home()} class="nav-brand">{siteConfig.siteTitle}</a>
+          <ul class="nav-menu">
+            {navLinks.map((link) => (
+              <li>
+                <a href={link.href} target={link.external ? '_blank' : undefined}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer>
+      <p>&copy; {siteConfig.copyrightYear} {siteConfig.siteTitle}. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
