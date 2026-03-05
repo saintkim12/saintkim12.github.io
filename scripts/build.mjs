@@ -7,7 +7,56 @@ import path from 'path';
 const packages = ['packages/blog', 'packages/portfolio'];
 const rootDir = process.cwd();
 
+// Inject resume frontmatter before building portfolio
+function injectResumeFrontmatter() {
+  const metadataPath = path.join(rootDir, 'packages/portfolio/resume-metadata.json');
+  const resumeDir = path.join(rootDir, 'packages/portfolio/src/content/resume');
+
+  if (!fs.existsSync(metadataPath)) {
+    console.log('⚠️  resume-metadata.json not found - skipping frontmatter injection');
+    return;
+  }
+
+  const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf-8'));
+
+  Object.entries(metadata).forEach(([key, meta]) => {
+    const markdownPath = path.join(resumeDir, `${key}.md`);
+
+    if (!fs.existsSync(markdownPath)) {
+      console.log(`⚠️  ${markdownPath} not found`);
+      return;
+    }
+
+    const content = fs.readFileSync(markdownPath, 'utf-8');
+
+    // Remove existing frontmatter if present
+    let cleanContent = content;
+    if (content.startsWith('---')) {
+      const endIndex = content.indexOf('---', 3);
+      if (endIndex !== -1) {
+        cleanContent = content.slice(endIndex + 3).trim();
+      }
+    }
+
+    // Create frontmatter
+    const frontmatter = `---
+title: "${meta.title}"
+description: "${meta.description}"
+---
+
+`;
+
+    // Write markdown with frontmatter
+    fs.writeFileSync(markdownPath, frontmatter + cleanContent, 'utf-8');
+    console.log(`✅ Injected frontmatter to ${key}.md`);
+  });
+}
+
 console.log('🚀 Starting monorepo build...\n');
+
+// Inject resume frontmatter before building
+injectResumeFrontmatter();
+console.log('');
 
 for (const pkg of packages) {
   const pkgDir = path.join(rootDir, pkg);

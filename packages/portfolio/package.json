@@ -4,7 +4,7 @@
   "description": "Portfolio package for saintkim12.github.io",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --port 4322",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

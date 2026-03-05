@@ -1,0 +1,10 @@
+{
+  "index": {
+    "title": "이력서",
+    "description": "8년 경력 풀스택 웹 개발자 - 프론트엔드, 백엔드, DevOps"
+  },
+  "detailed": {
+    "title": "상세 이력서",
+    "description": "전체 경력 및 기술 스택 상세 정보"
+  }
+}

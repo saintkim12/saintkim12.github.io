@@ -1,6 +1,6 @@
 ---
 title: "이력서"
-description: "웹 개발자 이력서"
+description: "8년 경력 풀스택 웹 개발자 - 프론트엔드, 백엔드, DevOps"
 ---
 
 # 이력서
@@ -32,7 +32,7 @@ description: "웹 개발자 이력서"
 
 **부피디(boopd) 플랫폼 전체 프론트엔드 개발**
 
-- 부피디 서비스 전체 프론트엔드 아키텍처 설계 및 구현. 관리자(React CRA), 사용자(Next.js, 9페이지), 랜딩페이지(Vite+Preact)를 개발하고, 모바일앱(React Native)은 웹뷰로 통합. 스타일 시스템 현대화, 개발 표준 수립
+- Claude Code를 활용한 부피디 서비스 전체 프론트엔드 아키텍처 설계 및 구현. 관리자(React CRA), 사용자(Next.js, 9페이지), 랜딩페이지(Vite+Preact)를 개발하고, 모바일앱(React Native)은 웹뷰로 통합. AI 기반 코드 생성으로 개발 속도 단축, 스타일 시스템 현대화, 개발 표준 수립
 - 기술: React 19, Next.js 16, React Native, TypeScript, Panda CSS, Tailwind CSS, Vite, Preact, Leaflet, D3-delaunay, Zustand, Recharts, shadcn/ui, Firebase, Google OAuth, SCSS, Node.js, Figma
 
 ### (주)스카이링크 (2022.09 ~ 2025.06)
