@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
-import remarkBreaks from 'remark-breaks';
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://saintkim12.github.io',
@@ -8,10 +9,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
   },
-  markdown: {
-    remarkPlugins: [remarkBreaks],
-    shikiConfig: {
-      theme: 'github-dark',
-    },
-  },
+  integrations: [
+    react(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+  ],
 });

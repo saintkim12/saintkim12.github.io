@@ -54,9 +54,31 @@ description: "${meta.description}"
 
 console.log('🚀 Starting monorepo build...\n');
 
+// Copy landing page (static HTML)
+function copyLandingPage() {
+  const landingSource = path.join(rootDir, 'packages/landing/index.html');
+  const distDest = path.join(rootDir, 'dist/index.html');
+
+  if (!fs.existsSync(landingSource)) {
+    console.error(`❌ Landing page not found at ${landingSource}`);
+    process.exit(1);
+  }
+
+  // Ensure dist directory exists
+  if (!fs.existsSync(path.join(rootDir, 'dist'))) {
+    fs.mkdirSync(path.join(rootDir, 'dist'), { recursive: true });
+  }
+
+  fs.copyFileSync(landingSource, distDest);
+  console.log('✅ Landing page copied to dist/index.html\n');
+}
+
 // Inject resume frontmatter before building
 injectResumeFrontmatter();
 console.log('');
+
+// Copy landing page first
+copyLandingPage();
 
 for (const pkg of packages) {
   const pkgDir = path.join(rootDir, pkg);
@@ -90,5 +112,6 @@ for (const pkg of packages) {
 
 console.log('✨ All packages built successfully!');
 console.log('\n📂 Build output:');
+console.log('  - dist/index.html (landing)');
 console.log('  - dist/blog/');
 console.log('  - dist/portfolio/');
