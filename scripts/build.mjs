@@ -54,23 +54,33 @@ description: "${meta.description}"
 
 console.log('🚀 Starting monorepo build...\n');
 
-// Copy landing page (static HTML)
+// Copy landing page (static HTML) and .nojekyll
 function copyLandingPage() {
-  const landingSource = path.join(rootDir, 'packages/landing/index.html');
-  const distDest = path.join(rootDir, 'dist/index.html');
+  const landingDir = path.join(rootDir, 'packages/landing');
+  const distDir = path.join(rootDir, 'dist');
 
+  // Ensure dist directory exists
+  if (!fs.existsSync(distDir)) {
+    fs.mkdirSync(distDir, { recursive: true });
+  }
+
+  // Copy index.html
+  const landingSource = path.join(landingDir, 'index.html');
   if (!fs.existsSync(landingSource)) {
     console.error(`❌ Landing page not found at ${landingSource}`);
     process.exit(1);
   }
+  fs.copyFileSync(landingSource, path.join(distDir, 'index.html'));
+  console.log('✅ Landing page copied to dist/index.html');
 
-  // Ensure dist directory exists
-  if (!fs.existsSync(path.join(rootDir, 'dist'))) {
-    fs.mkdirSync(path.join(rootDir, 'dist'), { recursive: true });
+  // Copy .nojekyll to disable Jekyll
+  const nojekyllSource = path.join(landingDir, '.nojekyll');
+  if (fs.existsSync(nojekyllSource)) {
+    fs.copyFileSync(nojekyllSource, path.join(distDir, '.nojekyll'));
+    console.log('✅ .nojekyll copied to dist/\n');
+  } else {
+    console.warn('⚠️  .nojekyll not found in packages/landing/\n');
   }
-
-  fs.copyFileSync(landingSource, distDest);
-  console.log('✅ Landing page copied to dist/index.html\n');
 }
 
 // Inject resume frontmatter before building
