@@ -8,8 +8,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.dirname(__dirname);
 
 const sourceFile = process.argv[2];
-const title = process.argv[3] || '이력서';
-const description = process.argv[4] || '';
+const argTitle = process.argv[3];
+const argDescription = process.argv[4];
 
 const targetFile = path.join(rootDir, 'packages/portfolio/src/content/resume/index.md');
 const metadataFile = path.join(rootDir, 'packages/portfolio/resume-metadata.json');
@@ -30,6 +30,10 @@ try {
   if (fs.existsSync(metadataFile)) {
     metadata = JSON.parse(fs.readFileSync(metadataFile, 'utf-8'));
   }
+
+  // 인자가 없으면 기존 메타데이터를 유지하고, 그것도 없을 때만 기본값을 쓴다
+  const title = argTitle || metadata.index?.title || '이력서';
+  const description = argDescription || metadata.index?.description || '';
 
   metadata.index = { title, description };
   fs.writeFileSync(metadataFile, JSON.stringify(metadata, null, 2));

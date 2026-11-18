@@ -174,8 +174,9 @@ Sync is manual and run from `../resume-data`; there is no CI wiring. From here, 
 this repository is narrow and you should expect exactly this much:
 
 1. `packages/portfolio/src/content/resume/index.md` is overwritten with `resume-simple.md`.
-2. `index` in `packages/portfolio/resume-metadata.json` is replaced by `scripts/setup-resume.mjs`,
-   with title `이력서` and an empty description because the export passes neither.
+2. `index` in `packages/portfolio/resume-metadata.json` is rewritten by `scripts/setup-resume.mjs`,
+   which keeps the stored title and description because the export passes neither (the defaults
+   `이력서` and an empty description apply only when no stored value exists).
 3. `packages/portfolio/src/data/*.ts` is not touched — the page keeps rendering the old mirror until
    those files are edited (see the next section).
 
