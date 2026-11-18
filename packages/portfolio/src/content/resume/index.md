@@ -63,9 +63,8 @@ description: "9년 경력 풀스택 웹 개발자 - 프론트엔드, 백엔드, 
 
 ## 📞 연락처
 
-- 📧 Email: [이메일 전송](mailto:example@example.com)
-- 💼 LinkedIn: [프로필 방문](https://linkedin.com/in/example)
-- 🔗 GitHub: [저장소 보기](https://github.com/example)
+- 🔗 GitHub: [저장소 보기](https://github.com/saintkim12)
+- 🌐 포트폴리오: [포트폴리오 방문](https://saintkim12.github.io)
 
 ---
 
