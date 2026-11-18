@@ -1,7 +1,7 @@
 export const heroData = {
   name: 'saintkim12',
   title: 'Full-Stack Web Developer',
-  subtitle: '8년 경력의 풀스택 웹 개발자입니다. 프론트엔드부터 백엔드, DevOps까지 웹 서비스 전반을 다루고 있습니다.',
+  subtitle: '9년 경력의 풀스택 웹 개발자입니다. 프론트엔드부터 백엔드, DevOps까지 웹 서비스 전반을 다루고 있습니다.',
   strengths: [
     'Claude Code를 활용한 개발 생산성 극대화',
     '기술 리더로서 아키텍처 설계 및 개발 표준 수립',

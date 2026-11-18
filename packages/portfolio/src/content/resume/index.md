@@ -1,6 +1,6 @@
 ---
 title: "이력서"
-description: "8년 경력 풀스택 웹 개발자 - 프론트엔드, 백엔드, DevOps"
+description: "9년 경력 풀스택 웹 개발자 - 프론트엔드, 백엔드, DevOps"
 ---
 
 # 이력서

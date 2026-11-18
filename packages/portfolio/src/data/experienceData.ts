@@ -10,6 +10,30 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    id: 'hpoint',
+    company: '(주)플레이투게더',
+    position: '웹 개발자',
+    period: '2026.07 ~ 2027.01',
+    description: '현대백화점 h.point 앱 구축 — 앱 내 서비스(웹·웹뷰) 풀스택 개발',
+    achievements: [
+      '앱 내 신규 서비스 화면을 AS-IS 분석부터 구현까지 완료',
+      '화면 요구에 맞춘 백엔드 API와 조회 쿼리 개발',
+      '광고 지면과 보상 팝업의 공통 컴포넌트화',
+      '운영 관리 도구 연동과 운영 이슈 대응',
+      '앱-웹 브리지 연동과 개인정보 처리',
+      'GA4 및 사내 지표 태깅 적용',
+    ],
+    technologies: [
+      'React',
+      'TypeScript',
+      'Java',
+      'Spring',
+      'MyBatis',
+      'Oracle',
+      'GA4(gtag.js)',
+    ],
+  },
+  {
     id: 'boopd',
     company: '(주)부동산빅뱅',
     position: '웹 개발자',
