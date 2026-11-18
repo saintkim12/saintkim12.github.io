@@ -2,10 +2,34 @@ export interface Experience {
   id: string;
   company: string;
   position: string;
-  period: string;
+  startDate: string;
+  endDate?: string;
   description: string;
   achievements: string[];
   technologies: string[];
+}
+
+/**
+ * 기간 표기: endDate가 이번 달보다 뒤면 진행 중으로 보여준다.
+ * endDate는 계획된 종료일 그대로 두고, 표기에서만 빌드 시점을 기준으로 판단한다.
+ */
+export function formatPeriod(
+  startDate: string,
+  endDate?: string | null,
+  now: Date = new Date(),
+): string {
+  const end = endDate ? monthIndex(endDate) : null;
+  const current = now.getFullYear() * 12 + now.getMonth();
+
+  if (end !== null && end > current) {
+    return `${startDate} ~ 현재 (${endDate} 종료 예정)`;
+  }
+  return `${startDate} ~ ${endDate ?? ''}`;
+}
+
+function monthIndex(value: string): number | null {
+  const match = /^(\d{4})\.(\d{2})$/.exec(value);
+  return match ? Number(match[1]) * 12 + Number(match[2]) - 1 : null;
 }
 
 export const experiences: Experience[] = [
@@ -13,7 +37,8 @@ export const experiences: Experience[] = [
     id: 'hpoint',
     company: '(주)플레이투게더',
     position: '웹 개발자',
-    period: '2026.07 ~ 2027.01',
+    startDate: '2026.07',
+    endDate: '2027.01',
     description: '현대백화점 h.point 앱 구축 — 앱 내 서비스(웹·웹뷰) 풀스택 개발',
     achievements: [
       '앱 내 신규 서비스 화면을 AS-IS 분석부터 구현까지 완료',
@@ -37,7 +62,8 @@ export const experiences: Experience[] = [
     id: 'boopd',
     company: '(주)부동산빅뱅',
     position: '웹 개발자',
-    period: '2026.01 ~ 2026.03',
+    startDate: '2026.01',
+    endDate: '2026.03',
     description: 'Claude Code를 활용한 부피디 서비스 전체 프론트엔드 아키텍처 설계 및 구현',
     achievements: [
       '관리자(React CRA), 사용자(Next.js, 9페이지), 랜딩페이지(Vite+Preact) 개발',
@@ -71,7 +97,8 @@ export const experiences: Experience[] = [
     id: 'skylink',
     company: '(주)스카이링크',
     position: '웹 개발자',
-    period: '2022.09 ~ 2025.06',
+    startDate: '2022.09',
+    endDate: '2025.06',
     description: '웨이브온 서비스 개발/유지보수',
     achievements: [
       '회사의 주 서비스인 웨이브온 개발 및 유지보수',
@@ -95,7 +122,8 @@ export const experiences: Experience[] = [
     id: 'synergy',
     company: '(주)시너지시스템즈',
     position: '웹 개발자',
-    period: '2021.05 ~ 2022.02',
+    startDate: '2021.05',
+    endDate: '2022.02',
     description: '스마트파인더 V2 (MES/POP 솔루션) 차세대 버전 개발',
     achievements: [
       '기존 .Net/C# 기반 레거시 솔루션을 Java/Vue.js 기반으로 리팩토링',
