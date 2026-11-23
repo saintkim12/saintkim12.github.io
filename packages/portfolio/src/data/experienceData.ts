@@ -35,7 +35,7 @@ function monthIndex(value: string): number | null {
 export const experiences: Experience[] = [
   {
     id: 'hpoint',
-    company: '(주)플레이투게더',
+    company: '(주)플레이투게더 · 현대백화점 h.point',
     position: '웹 개발자',
     startDate: '2026.07',
     endDate: '2027.01',

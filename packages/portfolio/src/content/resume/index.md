@@ -53,7 +53,7 @@ description: "9년 경력 풀스택 웹 개발자 - 프론트엔드, 백엔드, 
 
 ## 🛠️ 기술 스택
 
-**프로그래밍 언어** | JavaScript/TypeScript (8년) | Java (6년) | Python
+**프로그래밍 언어** | JavaScript/TypeScript (9년) | Java (6년) | Python
 **프론트엔드 프레임워크** | Vue.js (6년) | React | Nuxt.js
 **백엔드 프레임워크** | Node.js (Express) (6년) | Spring Boot (5년) | EgovFramework
 **데이터베이스** | MySQL | PostgreSQL | Oracle | MongoDB | DynamoDB
