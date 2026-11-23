@@ -13,7 +13,7 @@ export const heroData = {
     'AWS 클라우드 인프라 및 공공기관·스타트업 다양한 규모의 프로젝트 경험',
   ],
   skills: {
-    languages: ['JavaScript/TypeScript (9년)', 'Java (6년)', 'Python'],
+    languages: ['JavaScript/TypeScript (8년)', 'Java (6년)', 'Python'],
     frontend: ['Vue.js (6년)', 'React', 'Nuxt.js'],
     backend: ['Node.js/Express (6년)', 'Spring Boot (5년)', 'EgovFramework'],
     database: ['MySQL', 'PostgreSQL', 'Oracle', 'MongoDB', 'DynamoDB'],
