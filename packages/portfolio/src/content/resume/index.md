@@ -32,8 +32,8 @@ description: "9년 경력 풀스택 웹 개발자 - 프론트엔드, 백엔드, 
 
 **현대백화점 h.point 앱 구축 — 앱 내 서비스(웹·웹뷰) 풀스택 개발**
 
-- h.point 앱 안에 들어가는 서비스 영역을 신규로 구축한 프로젝트로, 모바일 앱 내 웹 페이지와 웹뷰 화면을 만들고 그 화면이 쓰는 백엔드 API와 조회 쿼리를 함께 개발했습니다. 기존 시스템의 설계서·화면·쿼리를 AS-IS로 분석해 신규 사양을 정리한 뒤 React 기반 화면과 Java 기반 API를 구현했고, 운영자가 콘텐츠와 이벤트를 등록·관리하는 도구와의 연동까지 담당했습니다.
-- 기술: React, TypeScript, Java, Spring, MyBatis, Oracle, GA4(gtag.js)
+- h.point 앱 안에 들어가는 서비스 영역(하이라이트·퀴즈·미션·글로벌미션)을 신규로 구축한 프로젝트로, 모바일 앱 내 웹 페이지와 웹뷰 화면을 만들고 그 화면이 쓰는 백엔드 API와 조회 쿼리를 함께 개발했습니다. 기존 시스템의 설계서·화면·쿼리를 AS-IS로 분석해 신규 사양을 정리한 뒤 React·Next.js 기반 화면과 Java(eGovFrame) 기반 API를 구현했고, 사내 이슈관리 시스템(TMS)에 등록된 QA 결함 대응까지 담당했습니다.
+- 기술: React, Next.js, TypeScript, Java, Spring, eGovFrame, MyBatis, Oracle, GA4(gtag.js)
 
 ### (주)부동산빅뱅 (2026.01 ~ 2026.03)
 
